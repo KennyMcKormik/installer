@@ -23,7 +23,7 @@ curl -s https://raw.githubusercontent.com/sajjaddg/xray-reality/master/default.j
 
 # Extract the desired variables using jq
 name="Vless-reality-custom"
-email="kennymckormik@github..com"
+email="kennymckormik@yahoo.com"
 port=443
 sni="yahoo.com"
 path="%2F"
