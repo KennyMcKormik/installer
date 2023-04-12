@@ -23,9 +23,9 @@ curl -s https://raw.githubusercontent.com/sajjaddg/xray-reality/master/default.j
 
 # Extract the desired variables using jq
 name="Vless-reality-custom"
-email="kennymckormik@yahoo.com"
+email="kennymckormik@google.com"
 port=443
-sni="yahoo.com"
+sni="google.com"
 path="%2F"
 
 if [ -n "$2" ]; then
