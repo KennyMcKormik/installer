@@ -25,7 +25,7 @@ curl -s https://raw.githubusercontent.com/sajjaddg/xray-reality/master/default.j
 name="Vless-reality-custom"
 email="kennymckormik@github..com"
 port=443
-sni="github.com"
+sni="yahoo.com"
 path="%2F"
 
 if [ -n "$2" ]; then
