@@ -43,12 +43,17 @@ iptables -P OUTPUT ACCEPT
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables -A FORWARD  -j ACCEPT
 sudo sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.ipv6.conf.all.forwarding=1
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.conf
+echo "net.ipv6.conf.all.forwarding=1" >> /etc/sysctl.conf
+sysctl -w net.ipv6.conf.tun6to4.forwarding=1
+sysctl -w net.ipv6.conf.gre1.forwarding=1
+ip6tables -F
+ip6tables -X
+ip6tables -P INPUT ACCEPT
+ip6tables -P FORWARD ACCEPT
+ip6tables -P OUTPUT ACCEPT
 sysctl -p
-service iptables save
-service iptables restart
-service iptables stop
-service iptables start
 EOL
     chmod +x $LOCAL_SCRIPT
     setup_cron
@@ -85,12 +90,17 @@ iptables -P OUTPUT ACCEPT
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables -A FORWARD  -j ACCEPT
 sudo sysctl -w net.ipv4.ip_forward=1
+sysctl -w net.ipv6.conf.all.forwarding=1
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.conf
+echo "net.ipv6.conf.all.forwarding=1" >> /etc/sysctl.conf
+sysctl -w net.ipv6.conf.tun6to4.forwarding=1
+sysctl -w net.ipv6.conf.gre1.forwarding=1
+ip6tables -F
+ip6tables -X
+ip6tables -P INPUT ACCEPT
+ip6tables -P FORWARD ACCEPT
+ip6tables -P OUTPUT ACCEPT
 sysctl -p
-service iptables save
-service iptables restart
-service iptables stop
-service iptables start
 EOL
     chmod +x $LOCAL_SCRIPT
     setup_cron
