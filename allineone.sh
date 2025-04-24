@@ -31,6 +31,24 @@ ip link set gre1 up
 ip addr add 10.10.5.2/30 dev gre1
 sleep 3
 ip route add default via 10.10.5.1 table 4
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -A FORWARD  -j ACCEPT
+sudo sysctl -w net.ipv4.ip_forward=1
+echo "net.ipv4.ip_forward=1" > /etc/sysctl.conf
+sysctl -p
+service iptables save
+service iptables restart
+service iptables stop
+service iptables start
 EOL
     chmod +x $LOCAL_SCRIPT
     setup_cron
@@ -55,6 +73,24 @@ ip link set gre1 up
 ip addr add 10.10.5.1/30 dev gre1
 sleep 3
 ip route add default via 10.10.5.2 table 4
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -A FORWARD  -j ACCEPT
+sudo sysctl -w net.ipv4.ip_forward=1
+echo "net.ipv4.ip_forward=1" > /etc/sysctl.conf
+sysctl -p
+service iptables save
+service iptables restart
+service iptables stop
+service iptables start
 EOL
     chmod +x $LOCAL_SCRIPT
     setup_cron
